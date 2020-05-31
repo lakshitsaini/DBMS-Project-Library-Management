@@ -1,0 +1,73 @@
+
+
+create table BOOKS(BID int primary key, Price float, Title varchar(100), Edition int, IssueDate date, DueDate date, AuthName varchar(100));
+create table ADDRESS(Pincode int primary key, City varchar(50), State varchar(50));
+create table PUBLISHERS(PubID int primary key, Email varchar(100), Name varchar(100),Pincode int,BID int,foreign key (Pincode) references ADDRESS(Pincode), foreign key (BID) references BOOKS(BID));
+create table MODERATORS(EmpID int primary key, Name varchar(100),Pincode int,BID int, foreign key (BID) references BOOKS(BID), foreign key (Pincode) references ADDRESS(Pincode));
+create table TEACHERS(TeacherID int primary key, Name varchar(100), BookCnt int, Dept varchar(100), FineAmt float,Pincode int,BID int, foreign key (BID) references BOOKS(BID), foreign key (Pincode) references ADDRESS(Pincode));
+create table STUDENTS(RegNo int primary key, BookCnt int, ContactNo int, ReserveCat varchar(50), YearOfStudy int, FineAmt float, Branch varchar(50), Name varchar(100),Pincode int,BID int, foreign key (BID) references BOOKS(BID), foreign key (Pincode) references ADDRESS(Pincode));
+
+
+insert into BOOKS values(12345,370.01,'Intro to cpp',3,'1999-01-01','1999-12-01','Shyam Kumar');
+insert into BOOKS values(56789,420,'Data structures',2,'2019-01-01','2019-12-01','Neeraj Kumar');
+insert into BOOKS values(23456,560,'Algorithms',5,'2018-01-01','2018-12-01','Lakshit Saini');
+insert into BOOKS values(34567,995.90,'Pablo camelo',1,'2020-01-01','2020-12-01','Snehil Kumar');
+insert into BOOKS values(45678,399,'Story Book',9,'2021-01-01','2021-12-03','Ramesh Singh');
+insert into BOOKS values(11111,370,'Intro to java',3,'1999-01-01','1999-12-01','Shyam Kumar');
+insert into BOOKS values(22222,420.45,'Data science',2,'2019-01-01','2019-12-01','Neeraj Kumar');
+insert into BOOKS values(33333,560,'Algorithms in python',5,'2018-01-01','2018-12-01','Lakshit Saini');
+insert into BOOKS values(44444,995,'Pointing peel',1,'2020-01-01','2020-12-01','Snehil Kumar');
+insert into BOOKS values(55555,399.25,'Stored puzzle',9,'2021-01-01','2021-12-03','Ramesh Singh');
+insert into BOOKS values(66666,370,'Intro to python',3,'1999-01-01','1999-12-01','Shyam Kumar');
+insert into BOOKS values(77777,420,'Data analytics',2,'2019-01-01','2019-12-01','Neeraj Kumar');
+insert into BOOKS values(88888,560.35,'Amanda',5,'2018-01-01','2018-12-01','Lakshit Saini');
+insert into BOOKS values(99999,995,'Koyla kala',1,'2020-01-01','2020-12-01','Snehil Kumar');
+insert into BOOKS values(45435,399.40,'Sneak peak',9,'2021-01-01','2021-12-03','Ramesh Singh');
+select * from BOOKS;
+
+insert into ADDRESS values(176454,'Agra','Himachal Pradesh');
+insert into ADDRESS values(785548,'Jaipur','Assam');
+insert into ADDRESS values(786532,'Warangal','Orissa');
+insert into ADDRESS values(198236,'Heydrabad','Himachal Pradesh');
+insert into ADDRESS values(364367,'Ahamdabad','Gujrat');
+insert into ADDRESS values(644673,'Chennai','Tamilnadu');
+insert into ADDRESS values(443749,'Pune','Maharashtra');
+insert into ADDRESS values(143445,'Chandigarh','Punjab');
+insert into ADDRESS values(239534,'Hisar','Haryana');
+insert into ADDRESS values(163044,'Alwar','Rajasthan');
+select * from ADDRESS;
+
+insert into PUBLISHERS values(101,'abc9797@gmail.com','Ritesh Kumar',176454,12345);
+insert into PUBLISHERS values(102,'swe576@gmail.com','Abhishek Singh',785548,56789);
+insert into PUBLISHERS values(103,'aqq5657@gmail.com','Amit Lal',786532,23456);
+insert into PUBLISHERS values(104,'adf24546@gmail.com','Param Singh',198236,34567);
+insert into PUBLISHERS values(105,'tyj12@gmail.com','Donald trump',364367,45678);
+insert into PUBLISHERS values(106,'tyj08997@gmail.com','Donald trump',364367,12345);
+insert into PUBLISHERS values(107,'frfv7578@gmail.com','Namit Paul',785548,23456);
+insert into PUBLISHERS values(108,'abc98@gmail.com','Ritesh Kumar',176454,11111);
+insert into PUBLISHERS values(109,'s12@gmail.com','Ramprasad',785548,22222);
+insert into PUBLISHERS values(110,'aqq65@gmail.com','Amit Lal',786532,33333);
+insert into PUBLISHERS values(111,'ad1@gmail.com','Pranav',198236,44444);
+insert into PUBLISHERS values(112,'tyj33@gmail.com','Donald trump',364367,55555);
+insert into PUBLISHERS values(113,'tyj4@gmail.com','Devanand',364367,66666);
+insert into PUBLISHERS values(114,'frfv12@gmail.com','Namit Paul',785548,77777);
+insert into PUBLISHERS values(115,'tyj5@gmail.com','Donald trump',364367,88888);
+insert into PUBLISHERS values(116,'tyj080@gmail.com','Pratik kaur',364367,99999);
+insert into PUBLISHERS values(117,'frfv757@gmail.com','Namit Paul',785548,45435);
+select * from PUBLISHERS;
+
+insert into MODERATORS values(1101,'Razia Sultan',163044,12345);
+insert into MODERATORS values(1102,'Pavan',163044,56789);
+insert into MODERATORS values(1103,'Praveen Kumar',239534,23456);
+insert into MODERATORS values(1104,'Pratik Solav',239534,34567);
+insert into MODERATORS values(1105,'Nitin lal',163044,45678);
+select * from MODERATORS;
+
+insert into TEACHERS values(9901,'Narendra Modi',2,'CSE',500.015,443749,12345);
+insert into TEACHERS values(9902,'Amit Shah',3,'ECE',324.7,143445,56789);
+select * from TEACHERS;
+
+
+insert into STUDENTS values(33301,0,9876543210,'OBC',1,0.00,'EEE','Biral Pradhan',239534,99999);
+insert into STUDENTS values(33302,1,9988776655,'GEN',4,15.45,'MME','RANJIT RANJAN',163044,66666);
+select * from STUDENTS;
